@@ -1,19 +1,20 @@
-# DCE Projects — Construction Marketplace
+# DCE Projects — MEP Consultants & Suppliers
 
-> India's premier MERN-stack marketplace for hiring construction labour, engineers, and renting tools & heavy machinery.
+> A premium MERN-stack e-commerce and services platform for mechanical, electrical, and plumbing (MEP) fixtures and consultancy. Based in Haldwani, Uttarakhand — serving businesses and individual clients across India with curated, high-end MEP products sourced from premium manufacturers.
 
-![DCE Projects](https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=400&fit=crop&auto=format)
+![DCE Projects](https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=400&fit=crop&auto=format)
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
 | Frontend | React 18 + Vite 8 |
-| Styling | Tailwind CSS v4 |
+| Styling | Tailwind CSS v4 + Vanilla CSS |
 | Routing | React Router v6 |
 | HTTP Client | Axios with JWT interceptor |
 | Toast | React Hot Toast |
 | Icons | Lucide React |
+| Typography | DM Serif Display + Inter (Google Fonts) |
 | Backend | Node.js + Express |
 | Database | MongoDB Atlas + Mongoose |
 | Auth | JWT + bcrypt |
@@ -25,30 +26,32 @@
 
 ```
 DC_Project/
-├── buildpro-client/          # React + Vite frontend
+├── dce-client/               # React + Vite frontend
 │   ├── src/
 │   │   ├── api/              # Axios instance
-│   │   ├── components/       # Navbar, Footer, ServiceCard, ProductCard
-│   │   ├── context/          # AuthContext (JWT decode + login/logout)
-│   │   ├── pages/            # Home, Login, Register, Services, Products,
-│   │   │                     # ServiceDetail, ProductDetail, Dashboard,
-│   │   │                     # About, Contact
+│   │   ├── components/       # Navbar, Footer, ProductCard, CartDrawer
+│   │   ├── context/          # AuthContext, CartContext
+│   │   ├── data/             # Fallback product data
+│   │   ├── pages/            # Home, Login, Register, Products,
+│   │   │                     # ProductDetail, Services, ServiceDetail,
+│   │   │                     # About, Contact, Dashboard,
+│   │   │                     # Checkout, OrderSuccess
 │   │   └── routes/           # AppRoutes (protected route wrapper)
 │   └── .env                  # VITE_API_URL
 │
-└── buildpro-server/          # Express backend
-    ├── models/               # User, Service, Product, Booking
-    ├── routes/               # auth, services, products, bookings
+└── dce-server/               # Express backend
+    ├── models/               # User, Service, Product, Booking, Order
+    ├── routes/               # auth, services, products, bookings, orders
     ├── middleware/            # authMiddleware (JWT verify)
-    ├── seed.js               # Database seeding script
-    └── server.js             # Express app entry
+    ├── seed.js               # Database seeding script (MEP products)
+    └── server.js             # Express app entry point
 ```
 
 ---
 
 ## Setup Instructions
 
-### 1. Clone & Prerequisites
+### 1. Prerequisites
 ```bash
 # Node.js 18+ required
 # MongoDB Atlas account required
@@ -57,7 +60,7 @@ DC_Project/
 ### 2. Backend Setup
 
 ```bash
-cd buildpro-server
+cd dce-server
 cp .env.example .env
 # Edit .env → fill in MONGO_URI and JWT_SECRET
 npm install
@@ -65,30 +68,35 @@ npm install
 
 **.env values to fill:**
 ```env
-MONGO_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/buildpro
+MONGO_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/dce_projects
 JWT_SECRET=your_long_random_secret_here
 PORT=5000
 CLIENT_URL=http://localhost:5173
 ```
 
 ```bash
-# Seed the database (run once)
+# Seed the database with sample MEP products (run once)
 npm run seed
 
 # Start the server
-npm run dev   # development (auto-restart)
+npm run dev   # development (auto-restart with --watch)
 npm start     # production
 ```
 
 ### 3. Frontend Setup
 
 ```bash
-cd buildpro-client
-npm install --legacy-peer-deps
+cd dce-client
+npm install
 npm run dev
 ```
 
 Frontend runs at **http://localhost:5173**
+
+Set your frontend `.env`:
+```env
+VITE_API_URL=http://localhost:5000/api
+```
 
 ---
 
@@ -100,24 +108,41 @@ Frontend runs at **http://localhost:5173**
 | POST | `/api/auth/register` | ❌ | `{ name, email, password, phone, role }` |
 | POST | `/api/auth/login` | ❌ | `{ email, password }` |
 
-### Services
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/services` | ❌ | List all services. Query: `?type=labour&available=true` |
-| GET | `/api/services/:id` | ❌ | Get service by ID |
-
 ### Products
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| GET | `/api/products` | ❌ | List all products. Query: `?category=tool&available=true` |
+| GET | `/api/products` | ❌ | List all products. Query: `?category=electrical&available=true` |
 | GET | `/api/products/:id` | ❌ | Get product by ID |
+| POST | `/api/products` | ✅ Admin | Create a new product |
+
+### Services
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/api/services` | ❌ | List all services |
+| GET | `/api/services/:id` | ❌ | Get service by ID |
+
+### Orders
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/api/orders` | ✅ | Place an order |
+| GET | `/api/orders/my` | ✅ | Get current user's orders |
 
 ### Bookings
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| POST | `/api/bookings` | ✅ | Create booking. Body: `{ itemId, itemType, startDate, endDate }` |
+| POST | `/api/bookings` | ✅ | Create a service booking |
 | GET | `/api/bookings/my` | ✅ | Get current user's bookings |
 | PATCH | `/api/bookings/:id/cancel` | ✅ | Cancel a booking |
+
+---
+
+## Product Categories
+
+| Category | Examples |
+|----------|---------|
+| **Electrical** | MCBs, RCCBs, Distribution Boards, Cables, Energy Meters |
+| **Mechanical / HVAC** | Split ACs, Ceiling Fans, AHUs, Duct Fans, GI Ductware |
+| **Plumbing** | CPVC Pipes, Ball Valves, Pumps, Water Heaters, Fittings |
 
 ---
 
@@ -125,28 +150,40 @@ Frontend runs at **http://localhost:5173**
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--bg-primary` | `#0A0A0A` | Page background |
-| `--bg-surface` | `#111111` | Cards / panels |
-| `--bg-elevated` | `#1A1A1A` | Hover states, modals |
-| `--accent-primary` | `#C8F135` | CTAs, highlights, active states |
-| `--accent-secondary` | `#FF5C2B` | Warnings, secondary badges |
-| `--text-primary` | `#F2F2F2` | Headings |
-| `--text-secondary` | `#888888` | Labels, muted copy |
-| `--border` | `#2A2A2A` | 1px borders |
+| Primary Color | `#008ab8` | Buttons, CTAs, highlights |
+| Text Primary | `#111111` | Headings, body |
+| Text Secondary | `#666666` | Labels, muted copy |
+| Background | `#FFFFFF` | Page background |
+| Surface | `#F9F9F9` | Cards, panels |
+| Border | `#CCCCCC` | Dividers, card borders |
+| Accent Orange | `#ff7f00` | Marquee subtext |
 
-**Typography:** Inter (Google Fonts) — weights 400/500/600/700/800
+**Typography:**
+- Headings — DM Serif Display (Google Fonts)
+- Body — Inter (Google Fonts) — weights 400/500/600/700
 
 ---
 
 ## Production Deployment
 
 ### Backend → Railway
-1. Push `buildpro-server` to GitHub
-2. New Railway project → Deploy from GitHub
-3. Add environment variables: `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL` (Vercel URL)
+1. Push `dce-server` to GitHub
+2. New Railway project → Deploy from GitHub repo
+3. Set Root Directory to `dce-server`
+4. Add environment variables: `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL` (your Vercel URL)
 
 ### Frontend → Vercel
-1. Push `buildpro-client` to GitHub
+1. Push this repo to GitHub
 2. New Vercel project → Import repo
-3. Add env var: `VITE_API_URL=https://your-railway-app.railway.app/api`
-4. Update Railway's `CLIENT_URL` to match your Vercel URL
+3. Set **Root Directory** to `dce-client`
+4. Add env var: `VITE_API_URL=https://your-railway-app.railway.app/api`
+5. Update Railway's `CLIENT_URL` to match your Vercel domain
+
+---
+
+## Contact
+
+**DCE Projects**  
+Haldwani, Uttarakhand, India  
+📞 +91 8171114006  
+📧 services.dce@gmail.com
