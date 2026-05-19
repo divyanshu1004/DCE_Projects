@@ -105,7 +105,7 @@ VITE_API_URL=http://localhost:5000/api
 ### Auth
 | Method | Endpoint | Auth | Body |
 |--------|----------|------|------|
-| POST | `/api/auth/register` | ❌ | `{ name, email, password, phone, role }` |
+| POST | `/api/auth/register` | ❌ | `{ name, email, password, role }` |
 | POST | `/api/auth/login` | ❌ | `{ email, password }` |
 
 ### Products
@@ -185,5 +185,4 @@ VITE_API_URL=http://localhost:5000/api
 
 **DCE Projects**  
 Haldwani, Uttarakhand, India  
-📞 +91 8171114006  
 📧 services.dce@gmail.com

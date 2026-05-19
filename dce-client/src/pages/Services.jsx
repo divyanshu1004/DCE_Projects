@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, MessageCircle, Clock, ArrowRight } from 'lucide-react'
+import { Mail, MapPin, MessageCircle, ArrowRight } from 'lucide-react'
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
 import { Link } from 'react-router-dom'
@@ -59,28 +59,16 @@ export default function Services() {
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 40, maxWidth: 500, margin: '0 auto 40px' }}>
-              {/* Phone */}
-              <a href="tel:+918171114006" style={{ display: 'flex', alignItems: 'center', gap: 20, background: '#fff', border: '1px solid #fff', borderRadius: 0, padding: '24px 32px', textDecoration: 'none', transition: 'all 0.3s' }}>
+              {/* Email */}
+              <a href="mailto:services.dce@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: 20, background: '#fff', border: '1px solid #fff', borderRadius: 0, padding: '24px 32px', textDecoration: 'none', transition: 'all 0.3s' }}>
                 <div style={{ width: 48, height: 48, background: '#F9F9F9', border: '1px solid #CCCCCC', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Phone size={20} color="#111" />
+                  <Mail size={20} color="#111" />
                 </div>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: 11, color: '#666', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>Call Us</div>
-                  <div style={{ fontSize: 24, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111' }}>+91 8171114006</div>
+                  <div style={{ fontSize: 11, color: '#666', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>Email Us</div>
+                  <div style={{ fontSize: 24, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111' }}>services.dce@gmail.com</div>
                 </div>
                 <ArrowRight size={20} color="#111" style={{ marginLeft: 'auto' }} />
-              </a>
-
-              {/* Email */}
-              <a href="mailto:services.dce@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: 20, background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 0, padding: '24px 32px', textDecoration: 'none', transition: 'all 0.3s' }}>
-                <div style={{ width: 48, height: 48, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Mail size={20} color="#fff" />
-                </div>
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>Email Us</div>
-                  <div style={{ fontSize: 20, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#fff' }}>services.dce@gmail.com</div>
-                </div>
-                <ArrowRight size={20} color="#fff" style={{ marginLeft: 'auto' }} />
               </a>
             </div>
 

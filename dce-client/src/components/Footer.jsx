@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -50,7 +50,6 @@ export default function Footer() {
           <div>
             <h4 style={{ fontSize: 11, fontWeight: 500, color: '#111', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 20 }}>Contact</h4>
             {[
-              [<Phone size={14} />, '+91 8171114006', 'tel:+918171114006'],
               [<Mail size={14} />, 'services.dce@gmail.com', 'mailto:services.dce@gmail.com'],
               [<MapPin size={14} />, 'RTO Road, Haldwani, Uttarakhand', null],
             ].map(([icon, text, href], i) => (

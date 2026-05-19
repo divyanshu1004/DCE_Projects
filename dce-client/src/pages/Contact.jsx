@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import { Mail, MapPin, Send } from 'lucide-react'
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
 import toast from 'react-hot-toast'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sending, setSending] = useState(false)
 
   function set(k) { return e => setForm(f => ({ ...f, [k]: e.target.value })) }
@@ -15,7 +15,7 @@ export default function Contact() {
     setSending(true)
     await new Promise(r => setTimeout(r, 1200))
     toast.success('Message sent! We\'ll get back to you within 24 hours.')
-    setForm({ name: '', email: '', phone: '', message: '' })
+    setForm({ name: '', email: '', message: '' })
     setSending(false)
   }
 
@@ -38,11 +38,10 @@ export default function Contact() {
             {[
               { label: 'Full Name', id: 'contact-name', key: 'name', type: 'text', placeholder: 'Rajesh Sharma' },
               { label: 'Email Address', id: 'contact-email', key: 'email', type: 'email', placeholder: 'rajesh@example.com' },
-              { label: 'Phone Number', id: 'contact-phone', key: 'phone', type: 'tel', placeholder: '+91 81711 14006' },
             ].map(f => (
               <div key={f.key}>
                 <label style={labelSt}>{f.label}</label>
-                <input id={f.id} type={f.type} placeholder={f.placeholder} value={form[f.key]} onChange={set(f.key)} required={f.key !== 'phone'}
+                <input id={f.id} type={f.type} placeholder={f.placeholder} value={form[f.key]} onChange={set(f.key)} required
                   style={inputSt}
                   onFocus={e => e.target.style.borderColor = '#111'}
                   onBlur={e => e.target.style.borderColor = '#CCCCCC'}
@@ -72,11 +71,10 @@ export default function Contact() {
           <div style={{ background: '#F9F9F9', border: '1px solid #CCCCCC', borderRadius: 0, padding: 32, marginBottom: 24 }}>
             <h3 style={{ fontSize: 16, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginBottom: 28 }}>Contact Information</h3>
             {[
-              [<Phone size={16} color="#111" />, 'Phone', '+91 8171114006', ''],
               [<Mail size={16} color="#111" />, 'Email', 'services.dce@gmail.com', ''],
               [<MapPin size={16} color="#111" />, 'Office', 'RTO Road, Haldwani', 'Uttarakhand — 262402'],
             ].map(([icon, label, line1, line2], i) => (
-              <div key={i} style={{ display: 'flex', gap: 16, marginBottom: i < 2 ? 28 : 0 }}>
+              <div key={i} style={{ display: 'flex', gap: 16, marginBottom: i < 1 ? 28 : 0 }}>
                 <div style={{ width: 40, height: 40, background: '#fff', border: '1px solid #CCCCCC', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{icon}</div>
                 <div>
                   <div style={{ fontSize: 11, color: '#666', fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 6 }}>{label}</div>
