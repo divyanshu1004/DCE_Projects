@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #FFFFFF;
+  --color-bg-surface: #F9F9F9;
+  --color-bg-elevated: #FFFFFF;
+  --color-accent-primary: #000000;
+  --color-accent-secondary: #555555;
+  --color-accent-blue: #000000;
+  --color-text-primary: #111111;
+  --color-text-secondary: #666666;
+  --color-border: #CCCCCC;
+  --color-success: #000000;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'DM Serif Display', serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: auto; }
+
+body {
+  background-color: #FFFFFF;
+  color: #111111;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .serif-text {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FFFFFF; }
+::-webkit-scrollbar-thumb { background: #CCCCCC; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #000000; }
+
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.25s;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Cart slide-in */
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.btn-primary {
+  display: inline-block;
+  text-decoration: none;
+  background: #106683ff;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 10px 24px;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  border: 1px solid #008ab8;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #007399;
+  border-color: #007399;
+  box-shadow: 0 4px 12px rgba(0, 138, 184, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-block;
+  text-decoration: none;
+  background: transparent;
+  color: #111;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 9px 24px;
+  border-radius: 0;
+  border: 1px solid #111;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  background: #111;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
