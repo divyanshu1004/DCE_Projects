@@ -23,6 +23,7 @@ app.use('/api/products', productRoutes)
 app.use('/api/bookings', bookingRoutes)
 app.use('/api/orders', orderRoutes)
 
+app.get('/', (req, res) => res.json({ status: 'ok', message: 'DCE Projects API is live', company: 'DCE Projects — MEP Consultants & Suppliers' }))
 app.get('/api/health', (req, res) => res.json({ status: 'ok', company: 'DCE Projects', timestamp: new Date() }))
 
 mongoose.connect(process.env.MONGO_URI)
