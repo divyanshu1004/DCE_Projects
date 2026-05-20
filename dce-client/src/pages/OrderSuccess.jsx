@@ -60,7 +60,7 @@ export default function OrderSuccess() {
         </div>
 
         <p style={{ fontSize: 13, color: '#4A4A4A', marginTop: 32 }}>
-          Questions? Call us at <a href="tel:+918171114006" style={{ color: '#1D592C', textDecoration: 'none' }}>+91 8171114006</a> or email <a href="mailto:services.dce@gmail.com" style={{ color: '#1D592C', textDecoration: 'none' }}>services.dce@gmail.com</a>
+          Questions? Email us at <a href="mailto:services.dce@gmail.com" style={{ color: '#1D592C', textDecoration: 'none' }}>services.dce@gmail.com</a>
         </p>
       </div>
     </div>

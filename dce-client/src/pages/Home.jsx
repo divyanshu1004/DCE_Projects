@@ -239,10 +239,7 @@ export default function Home() {
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', maxWidth: 500, margin: '0 auto' }}>To discuss purchasing requirements or request a customized quote, please reach out to our team.</p>
               </div>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <a href="tel:+918171114006" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: '#111', fontWeight: 500, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.05em', padding: '15px 32px', borderRadius: 0, textDecoration: 'none' }}>
-                  Call +91 8171114006
-                </a>
-                <a href="mailto:services.dce@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'transparent', color: '#fff', fontWeight: 500, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.05em', padding: '14px 32px', border: '1px solid rgba(255,255,255,0.3)', borderRadius: 0, textDecoration: 'none' }}>
+                <a href="mailto:services.dce@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: '#111', fontWeight: 500, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.05em', padding: '15px 32px', borderRadius: 0, textDecoration: 'none' }}>
                   Email Us
                 </a>
               </div>

@@ -120,10 +120,7 @@ export default function ProductDetail() {
                 Please contact our sales team directly. We will provide you with a customized quote and assist with your order.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <a href="tel:+918171114006" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#111', color: '#fff', textDecoration: 'none', padding: '14px 24px', fontSize: 14, fontWeight: 500, letterSpacing: '0.05em', transition: 'background 0.3s' }}>
-                  Call +91 8171114006
-                </a>
-                <a href="mailto:services.dce@gmail.com" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'transparent', color: '#111', border: '1px solid #111', textDecoration: 'none', padding: '14px 24px', fontSize: 14, fontWeight: 500, letterSpacing: '0.05em', transition: 'background 0.3s' }}>
+                <a href="mailto:services.dce@gmail.com" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#111', color: '#fff', textDecoration: 'none', padding: '14px 24px', fontSize: 14, fontWeight: 500, letterSpacing: '0.05em', transition: 'background 0.3s' }}>
                   Email services.dce@gmail.com
                 </a>
               </div>
