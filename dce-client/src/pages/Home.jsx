@@ -141,7 +141,7 @@ export default function Home() {
 
 
 
-      {/* ── INTRO — Sterling & Wilson style ── */}
+      {/* ── INTRO —*/}
       <section style={{ padding: '120px 32px' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px,1fr))', gap: 80, alignItems: 'center' }}>
           <FadeIn direction="left">
