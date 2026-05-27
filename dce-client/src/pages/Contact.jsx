@@ -50,8 +50,8 @@ export default function Contact() {
             ))}
             <div>
               <label style={labelSt}>Message</label>
-              <textarea id="contact-message" placeholder="Tell us about your project or question…" value={form.message} onChange={set('message')} required rows={5}
-                style={{ ...inputSt, height: 'auto', resize: 'vertical', paddingTop: 16, paddingBottom: 16 }}
+              <textarea id="contact-message" placeholder="Tell us about your project or question…" value={form.message} onChange={set('message')} required rows={2}
+                style={{ ...inputSt, height: 'auto', resize: 'vertical', paddingTop: 12, paddingBottom: 12 }}
                 onFocus={e => e.target.style.borderColor = '#111'}
                 onBlur={e => e.target.style.borderColor = '#CCCCCC'}
               />
@@ -86,28 +86,15 @@ export default function Contact() {
           </div>
 
           {/* Map placeholder */}
-          <div style={{ borderRadius: 0, overflow: 'hidden', height: 240, background: '#F9F9F9', border: '1px solid #CCCCCC', position: 'relative' }}>
+          <div style={{ borderRadius: 0, overflow: 'hidden', height: 250, background: '#F9F9F9', border: '1px solid #CCCCCC', position: 'relative' }}>
             <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop" alt="Map" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3, filter: 'grayscale(1)' }} />
             <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 12 }}>
-              <MapPin size={24} color="#111" />
+              <MapPin size={25} color="#111" />
               <span style={{ fontSize: 13, color: '#111', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>RTO Road, Haldwani</span>
             </div>
           </div>
 
-          {/* Hours */}
-          <div style={{ background: '#F9F9F9', border: '1px solid #CCCCCC', borderRadius: 0, padding: 32, marginTop: 24 }}>
-            <h4 style={{ fontSize: 16, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginBottom: 20 }}>Business Hours</h4>
-            {[
-              ['Mon – Fri', '9:00 AM – 7:00 PM'],
-              ['Saturday', '10:00 AM – 5:00 PM'],
-              ['Sunday', 'Closed'],
-            ].map(([day, hrs]) => (
-              <div key={day} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14, marginBottom: 12, borderBottom: day !== 'Sunday' ? '1px solid #CCCCCC' : 'none', paddingBottom: day !== 'Sunday' ? 12 : 0 }}>
-                <span style={{ color: '#666' }}>{day}</span>
-                <span style={{ color: hrs === 'Closed' ? '#999' : '#111', fontWeight: hrs === 'Closed' ? 400 : 500 }}>{hrs}</span>
-              </div>
-            ))}
-          </div>
+
         </div>
       </section>
 
