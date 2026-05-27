@@ -1,6 +1,6 @@
-# DCE Projects — MEP Consultants & Suppliers
+# DCE Projects — MEP & Automation Engineering Organization
 
-> A premium MERN-stack e-commerce and services platform for mechanical, electrical, and plumbing (MEP) fixtures and consultancy. Based in Haldwani, Uttarakhand — serving businesses and individual clients across India with curated, high-end MEP products sourced from premium manufacturers.
+> A premium MERN-stack platform showcasing engineering services and products. Founded in 2021 in Haldwani, Uttarakhand, DCE Projects is a full-spectrum MEP and automation engineering organization delivering Industrial Automation, HVAC, Solar, Chiller Plants, PLC/SCADA, and Turnkey Projects across India with uncompromising quality.
 
 ![DCE Projects](https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=400&fit=crop&auto=format)
 

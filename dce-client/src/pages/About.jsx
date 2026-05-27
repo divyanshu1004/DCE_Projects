@@ -119,10 +119,10 @@ const services = [
 
 
 const milestones = [
-  { year: '2021', event: 'DCE Projects founded in Haldwani, Uttarakhand — starting with MEP consultancy, product supply, and HVAC services.' },
-  { year: '2022', event: 'Expanded service portfolio to include Industrial Automation, PLC/SCADA programming, and CAD drafting services.' },
-  { year: '2023', event: 'Launched Chiller Plant Setup, Radiant Surface Heating, and Solar Energy solutions for commercial and industrial clients.' },
-  { year: 'Today', event: 'Growing into a full-spectrum engineering organisation — Turnkey Projects, HVAC AMC, HPN Consultancy, and Imported Machine Spares across Uttarakhand and beyond.' },
+  { year: '2021', event: 'DCE Projects founded in Haldwani, Uttarakhand as a full-spectrum engineering organisation delivering MEP, HVAC, and industrial automation.' },
+  { year: '2022', event: 'Delivered advanced PLC/SCADA programming and custom CAD engineering services for large-scale industrial clients.' },
+  { year: '2023', event: 'Successfully executed major solar energy installations, radiant surface heating systems, and chiller plants.' },
+  { year: 'Today', event: 'Continuing to deliver turnkey projects, imported machine spares sourcing, and comprehensive engineering AMC services nationwide.' },
 ]
 
 const whyUs = [

@@ -181,12 +181,12 @@ export default function Home() {
                 Engineered for Every Need
               </h2>
               <p style={{ fontSize: 16, color: '#666', maxWidth: 560, margin: '0 auto', lineHeight: 1.8 }}>
-                Six core practice areas — each backed by qualified engineers, certified equipment, and a track record of delivery.
+                Four core practice areas — each backed by qualified engineers, certified equipment, and a track record of delivery.
               </p>
             </div>
           </FadeIn>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 2, background: '#e0e0e0' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 2, background: '#e0e0e0' }}>
             {coreServices.map((s, i) => (
               <FadeIn key={i} delay={i * 60}>
                 <div
