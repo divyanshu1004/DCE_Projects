@@ -102,11 +102,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* scroll cue */}
-        <div style={{ position: 'absolute', bottom: 40, left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, opacity: heroLoaded ? 1 : 0, transition: 'opacity 1.2s ease 0.5s' }}>
-          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll</span>
-          <div style={{ width: 1, height: 40, background: 'linear-gradient(to bottom, rgba(255,255,255,0.5), transparent)' }} />
-        </div>
       </section>
 
       {/* ── TICKER MARQUEE ── */}
