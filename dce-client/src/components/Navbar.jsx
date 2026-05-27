@@ -57,11 +57,8 @@ export default function Navbar() {
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', height: 80, gap: 32 }}>
 
           {/* Logo */}
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', flexShrink: 0 }}>
-            <div>
-              <div style={{ fontSize: 22, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', letterSpacing: '-0.02em', lineHeight: 1 }}>DCE</div>
-              <div style={{ fontSize: 9, color: '#666', fontWeight: 500, letterSpacing: '0.15em', textTransform: 'uppercase', lineHeight: 1, marginTop: 4 }}>MEP Consultants & Suppliers</div>
-            </div>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
+            <img src="/dce-logo.png" alt="DCE Projects Logo" style={{ height: '130px', objectFit: 'contain', display: 'block' }} />
           </Link>
 
           {/* Center Nav */}

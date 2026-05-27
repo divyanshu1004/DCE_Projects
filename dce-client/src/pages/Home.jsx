@@ -1,14 +1,10 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  ArrowRight, Cpu, Monitor, Wind, Sun, Layers,
-  Thermometer, Building2, Zap
+  ArrowRight, Cpu, Wind, Sun, Layers,
 } from 'lucide-react'
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
-import ProductCard from '../components/ProductCard.jsx'
-import api from '../api/axios.js'
-import { FALLBACK_PRODUCTS } from '../data/fallbackProducts.js'
 
 /* ─── helpers ─── */
 function useInView(threshold = 0.12) {
@@ -52,15 +48,15 @@ const coreServices = [
 
 
 
+
+
 export default function Home() {
   const [heroLoaded, setHeroLoaded] = useState(false)
-  const [featured, setFeatured] = useState([])
   const marqueeRef = useRef(null)
   const animRef = useRef(null)
 
   useEffect(() => { setTimeout(() => setHeroLoaded(true), 80) }, [])
 
-  /* marquee animation */
   useEffect(() => {
     if (marqueeRef.current) {
       animRef.current = marqueeRef.current.animate(
@@ -68,12 +64,6 @@ export default function Home() {
         { duration: 36000, iterations: Infinity }
       )
     }
-  }, [])
-
-  useEffect(() => {
-    api.get('/products')
-      .then(r => setFeatured(r.data?.length ? r.data.slice(0, 8) : FALLBACK_PRODUCTS.slice(0, 8)))
-      .catch(() => setFeatured(FALLBACK_PRODUCTS.slice(0, 8)))
   }, [])
 
   return (
@@ -91,8 +81,8 @@ export default function Home() {
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,72,92,0.82) 35%, rgba(7,72,92,0.48) 100%)' }} />
         </div>
 
-        <div style={{ position: 'relative', maxWidth: 1280, margin: '0 auto', padding: '0 32px', width: '100%' }}>
-          <div style={{ opacity: heroLoaded ? 1 : 0, transform: heroLoaded ? 'none' : 'translateY(32px)', transition: 'all 0.9s cubic-bezier(0.19,1,0.22,1)', maxWidth: 820 }}>
+        <div style={{ position: 'relative', width: '100%', padding: '0 32px', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ maxWidth: 820, width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <img
               src="/dce-logo.png"
               alt="DCE Projects"
@@ -105,7 +95,7 @@ export default function Home() {
             <p style={{ fontSize: 'clamp(15px,1.8vw,19px)', color: 'rgba(255,255,255,0.82)', lineHeight: 1.85, maxWidth: 640, marginBottom: 44 }}>
               DCE Projects is a full-spectrum MEP engineering organisation — delivering Industrial Automation, PLC/SCADA, HVAC, Solar, Chiller Plants, Turnkey Projects, and specialist consultancy across India.
             </p>
-            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
               <Link to="/contact" className="btn-primary" style={{ fontSize: 13, padding: '14px 36px' }}>Start a Project</Link>
               <Link to="/about" className="btn-ghost" style={{ fontSize: 13, padding: '13px 36px', color: '#fff', borderColor: 'rgba(255,255,255,0.5)' }}>Who We Are</Link>
             </div>
@@ -234,43 +224,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATURED PRODUCTS ── */}
-      <section style={{ padding: '120px 32px', background: '#f8fafb' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <FadeIn>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, flexWrap: 'wrap', gap: 24 }}>
-              <div>
-                <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Product Catalog</span>
-                <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginTop: 16 }}>
-                  Featured Products
-                </h2>
-              </div>
-              <Link to="/products" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: BRAND, fontWeight: 600, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.08em', textDecoration: 'none', borderBottom: `2px solid ${BRAND}`, paddingBottom: 4, whiteSpace: 'nowrap' }}>
-                View All <ArrowRight size={14} />
-              </Link>
-            </div>
-          </FadeIn>
-
-          {featured.length === 0 ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 24 }}>
-              {[...Array(8)].map((_, i) => (
-                <div key={i} style={{ background: '#fff', border: '1px solid #e5e5e5', overflow: 'hidden' }}>
-                  <div style={{ aspectRatio: '1/1', background: '#efefef', animation: 'pulse 1.5s ease-in-out infinite' }} />
-                  <div style={{ padding: 20 }}>
-                    <div style={{ height: 14, background: '#efefef', marginBottom: 12, animation: 'pulse 1.5s ease-in-out infinite' }} />
-                    <div style={{ height: 20, background: '#efefef', width: '60%', animation: 'pulse 1.5s ease-in-out infinite' }} />
-                  </div>
-                </div>
-              ))}
-              <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }`}</style>
-            </div>
-          ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 24 }}>
-              {featured.map(p => <ProductCard key={p._id} product={p} />)}
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* ── ABOUT TEASER ── */}
       <section style={{ padding: '120px 32px', background: '#fff' }}>
