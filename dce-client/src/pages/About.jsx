@@ -37,9 +37,13 @@ function FadeIn({ children, delay = 0, direction = 'up' }) {
   )
 }
 
-const BRAND = '#106683'
-const BRAND_DARK = '#07485c'
-const BRAND_LIGHT = '#e8f4f8'
+/* ─── Images ─── */
+const ABOUT_HERO_IMAGE = 'https://images.pexels.com/photos/35602970/pexels-photo-35602970.jpeg'
+const ABOUT_TEAM_IMAGE = 'https://images.pexels.com/photos/35496414/pexels-photo-35496414.jpeg'
+
+const BRAND = '#1e3a8a'
+const BRAND_DARK = '#0f172a'
+const BRAND_LIGHT = '#e0eefa'
 
 const services = [
   {
@@ -146,11 +150,11 @@ export default function About() {
       <section style={{ position: 'relative', minHeight: '92vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <img
-            src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1800&auto=format&fit=crop&q=80"
+            src={ABOUT_HERO_IMAGE}
             alt="DCE Projects Engineering"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(7,72,92,0.88) 40%, rgba(7,72,92,0.55) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(15, 23, 42, 0.88) 40%, rgba(30, 58, 138, 0.55) 100%)' }} />
         </div>
 
         <div style={{ position: 'relative', maxWidth: 1280, margin: '0 auto', padding: '140px 32px 100px', width: '100%' }}>
@@ -167,7 +171,7 @@ export default function About() {
             </p>
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <Link to="/contact" className="btn-primary" style={{ fontSize: 13, padding: '14px 36px' }}>Get In Touch</Link>
-              <Link to="/services" className="btn-ghost" style={{ fontSize: 13, padding: '13px 36px', color: '#fff', borderColor: 'rgba(255,255,255,0.5)' }}>Our Services</Link>
+              <Link to="/services" className="btn-ghost-light" style={{ fontSize: 13, padding: '13px 36px' }}>Our Services</Link>
             </div>
           </div>
         </div>
@@ -176,7 +180,7 @@ export default function About() {
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
           <div style={{ background: '#fff', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
             {['MEP Engineering', 'Industrial Automation', 'HVAC & Chiller', 'Solar Energy', 'Turnkey Projects', 'PLC / SCADA'].map((d, i) => (
-              <div key={i} style={{ padding: '20px 32px', fontSize: 11, fontWeight: 600, color: BRAND, textTransform: 'uppercase', letterSpacing: '0.12em', borderLeft: i > 0 ? '1px solid #e5e5e5' : 'none', whiteSpace: 'nowrap' }}>
+              <div key={i} style={{ padding: '20px 32px', fontSize: 11, fontWeight: 600, color: BRAND, textTransform: 'uppercase', letterSpacing: '0.12em', borderLeft: i > 0 ? '1px solid #e2e8f0' : 'none', whiteSpace: 'nowrap' }}>
                 {d}
               </div>
             ))}
@@ -236,16 +240,68 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── SERVICES GRID ── */}
+      {/* Our Story */}
+      <section style={{ padding: '120px 32px', background: '#fff' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 80, alignItems: 'center' }}>
+          <FadeIn direction="left">
+            <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Our Story</span>
+            <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#0f172a', marginTop: 16, marginBottom: 28, lineHeight: 1.1 }}>
+              Built to Engineer.<br />Every Discipline, Day One.
+            </h2>
+            <p style={{ fontSize: 16, color: '#64748b', lineHeight: 1.9, marginBottom: 20 }}>
+              Founded in 2021 in Haldwani, Uttarakhand, DCE Projects was established as a full-spectrum engineering organisation from the very start — not just a consultancy or supplier, but a complete partner capable of handling Industrial Automation, PLC/SCADA, HVAC, Solar, Chiller Plants, and Turnkey Projects under one roof.
+            </p>
+            <p style={{ fontSize: 16, color: '#64748b', lineHeight: 1.9, marginBottom: 36 }}>
+              DCE Projects works with commercial buildings, industrial facilities, and infrastructure projects — offering end-to-end engineering solutions, from a single chiller installation to a fully automated facility.
+            </p>
+            <Link to="/contact" className="link-underline">
+              Discuss Your Project <ArrowRight size={14} />
+            </Link>
+          </FadeIn>
+          <FadeIn direction="right" delay={150}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+              {milestones.map((m, i) => (
+                <div key={i} style={{ display: 'flex', gap: 24, paddingBottom: i < milestones.length - 1 ? 36 : 0, borderBottom: i < milestones.length - 1 ? '1px solid #e2e8f0' : 'none', marginBottom: i < milestones.length - 1 ? 36 : 0 }}>
+                  <div style={{ width: 80, flexShrink: 0 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: BRAND, textTransform: 'uppercase', letterSpacing: '0.1em', background: '#e0eefa', padding: '4px 10px', borderRadius: 2 }}>{m.year}</span>
+                  </div>
+                  <p style={{ fontSize: 14, color: '#64748b', lineHeight: 1.75 }}>{m.event}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* FULL-WIDTH IMAGE BANNER */}
+      <section style={{ position: 'relative', height: 480, overflow: 'hidden' }}>
+        <img
+          src={ABOUT_HERO_IMAGE}
+          alt="DCE Projects Team"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.55)' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 24px' }}>
+          <FadeIn>
+            <h2 style={{ fontSize: 'clamp(32px,5vw,64px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#fff', letterSpacing: '-0.02em', textShadow: '0 4px 24px rgba(0,0,0,0.3)' }}>
+              Our work speaks for us.
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 15, marginTop: 20, textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 500 }}>
+              Automation • HVAC • Solar • Turnkey • MEP
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* SERVICES GRID */}
       <section style={{ padding: '120px 32px', background: '#f8fafb' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <FadeIn>
             <div style={{ textAlign: 'center', marginBottom: 72 }}>
               <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, letterSpacing: '0.2em', textTransform: 'uppercase' }}>What We Do</span>
-              <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginTop: 16, marginBottom: 20 }}>
+              <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#0f172a', marginTop: 16, marginBottom: 20 }}>
                 Our Services & Capabilities
               </h2>
-              <p style={{ fontSize: 16, color: '#666', maxWidth: 600, margin: '0 auto', lineHeight: 1.8 }}>
+              <p style={{ fontSize: 16, color: '#64748b', maxWidth: 600, margin: '0 auto', lineHeight: 1.8 }}>
                 From industrial control systems to sustainable energy — DCE Projects delivers engineering solutions across every MEP and automation discipline.
               </p>
             </div>
@@ -255,14 +311,14 @@ export default function About() {
             {services.map((s, i) => (
               <FadeIn key={i} delay={i * 40}>
                 <div
-                  style={{ background: '#fff', padding: '44px 36px', height: '100%', cursor: 'default', transition: 'background 0.3s, transform 0.3s' }}
+                  style={{ background: '#fff', padding: '44px 36px', height: '100%', cursor: 'default', transition: 'all 0.3s ease' }}
                   onMouseEnter={e => { e.currentTarget.style.background = BRAND; e.currentTarget.querySelector('.svc-tag').style.color = 'rgba(255,255,255,0.6)'; e.currentTarget.querySelector('.svc-icon').style.color = '#fff'; e.currentTarget.querySelector('.svc-title').style.color = '#fff'; e.currentTarget.querySelector('.svc-desc').style.color = 'rgba(255,255,255,0.82)' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.querySelector('.svc-tag').style.color = BRAND; e.currentTarget.querySelector('.svc-icon').style.color = BRAND; e.currentTarget.querySelector('.svc-title').style.color = '#111'; e.currentTarget.querySelector('.svc-desc').style.color = '#666' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.querySelector('.svc-tag').style.color = BRAND; e.currentTarget.querySelector('.svc-icon').style.color = BRAND; e.currentTarget.querySelector('.svc-title').style.color = '#0f172a'; e.currentTarget.querySelector('.svc-desc').style.color = '#64748b' }}
                 >
                   <span className="svc-tag" style={{ fontSize: 10, fontWeight: 700, color: BRAND, letterSpacing: '0.18em', textTransform: 'uppercase', display: 'block', marginBottom: 20, transition: 'color 0.3s' }}>{s.tag}</span>
                   <div className="svc-icon" style={{ color: BRAND, marginBottom: 16, transition: 'color 0.3s' }}>{s.icon}</div>
-                  <h3 className="svc-title" style={{ fontSize: 20, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginBottom: 14, lineHeight: 1.3, transition: 'color 0.3s' }}>{s.title}</h3>
-                  <p className="svc-desc" style={{ fontSize: 14, color: '#666', lineHeight: 1.8, transition: 'color 0.3s' }}>{s.desc}</p>
+                  <h3 className="svc-title" style={{ fontSize: 20, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#0f172a', marginBottom: 14, lineHeight: 1.3, transition: 'color 0.3s' }}>{s.title}</h3>
+                  <p className="svc-desc" style={{ fontSize: 14, color: '#64748b', lineHeight: 1.8, transition: 'color 0.3s' }}>{s.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -276,10 +332,10 @@ export default function About() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px,1fr))', gap: 64, alignItems: 'start' }}>
             <FadeIn direction="left">
               <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Why Choose Us</span>
-              <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginTop: 16, marginBottom: 28, lineHeight: 1.1 }}>
+              <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#0f172a', marginTop: 16, marginBottom: 28, lineHeight: 1.1 }}>
                 The DCE Projects Difference
               </h2>
-              <p style={{ fontSize: 16, color: '#555', lineHeight: 1.9, marginBottom: 32 }}>
+              <p style={{ fontSize: 16, color: '#64748b', lineHeight: 1.9, marginBottom: 32 }}>
                 We combine deep domain expertise with a genuine commitment to client success — delivering reliable, cost-effective, and sustainable engineering solutions.
               </p>
               <div style={{ padding: '32px', background: BRAND_LIGHT, borderLeft: `4px solid ${BRAND}` }}>
@@ -292,13 +348,13 @@ export default function About() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
               {whyUs.map((w, i) => (
                 <FadeIn key={i} delay={i * 80}>
-                  <div style={{ padding: '28px', border: '1px solid #e8e8e8', borderRadius: 2, transition: 'border-color 0.3s, box-shadow 0.3s' }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = BRAND; e.currentTarget.style.boxShadow = `0 4px 20px rgba(16,102,131,0.1)` }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8'; e.currentTarget.style.boxShadow = 'none' }}
+                  <div style={{ padding: '28px', border: '1px solid #e2e8f0', borderRadius: 0, transition: 'border-color 0.3s, box-shadow 0.3s' }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = BRAND; e.currentTarget.style.boxShadow = `0 4px 20px rgba(30,58,138,0.08)` }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.boxShadow = 'none' }}
                   >
                     <div style={{ color: BRAND, marginBottom: 12 }}>{w.icon}</div>
-                    <h4 style={{ fontSize: 15, fontWeight: 600, color: '#111', marginBottom: 8, lineHeight: 1.3 }}>{w.title}</h4>
-                    <p style={{ fontSize: 13, color: '#666', lineHeight: 1.7 }}>{w.body}</p>
+                    <h4 style={{ fontSize: 15, fontWeight: 600, color: '#0f172a', marginBottom: 8, lineHeight: 1.3 }}>{w.title}</h4>
+                    <p style={{ fontSize: 13, color: '#64748b', lineHeight: 1.7 }}>{w.body}</p>
                   </div>
                 </FadeIn>
               ))}
@@ -325,13 +381,13 @@ export default function About() {
                 'Pharmaceuticals', 'Education', 'Government Projects'
               ].map((sec, i) => (
                 <span key={i} style={{
-                  padding: '10px 22px', border: '1px solid rgba(255,255,255,0.2)',
+                  padding: '10px 22px', border: '1px solid rgba(255,255,255,0.15)',
                   color: 'rgba(255,255,255,0.82)', fontSize: 13, fontWeight: 500,
                   letterSpacing: '0.04em', cursor: 'default',
-                  transition: 'background 0.25s, border-color 0.25s',
+                  transition: 'all 0.25s',
                 }}
-                  onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}
                 >{sec}</span>
               ))}
             </div>
@@ -344,10 +400,10 @@ export default function About() {
         <div style={{ maxWidth: 700, margin: '0 auto' }}>
           <FadeIn>
             <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Get Started</span>
-            <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginTop: 16, marginBottom: 24, lineHeight: 1.1 }}>
+            <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#0f172a', marginTop: 16, marginBottom: 24, lineHeight: 1.1 }}>
               Ready to Engineer Your Next Project?
             </h2>
-            <p style={{ fontSize: 16, color: '#666', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, margin: '0 auto 44px' }}>
+            <p style={{ fontSize: 16, color: '#64748b', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, margin: '0 auto 44px' }}>
               Whether you need a full turnkey solution or specialised consultancy, our team is ready to deliver. Let's talk about your requirements.
             </p>
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>

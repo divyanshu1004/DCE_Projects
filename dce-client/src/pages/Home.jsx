@@ -6,6 +6,16 @@ import {
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer.jsx'
 
+/* ─── Image Constants ─── */
+const HERO_IMAGE = 'https://images.pexels.com/photos/35496414/pexels-photo-35496414.jpeg'
+const INTRO_IMAGE = 'https://images.pexels.com/photos/34938441/pexels-photo-34938441.jpeg'
+const WORK_IMAGE = 'https://images.pexels.com/photos/35602970/pexels-photo-35602970.jpeg'
+
+/* ─── Brand Colors ─── */
+const BRAND = '#1e3a8a'
+const BRAND_DARK = '#0f172a'
+const BRAND_LIGHT = '#e0eefa'
+
 /* ─── helpers ─── */
 function useInView(threshold = 0.12) {
   const ref = useRef(null)
@@ -27,10 +37,6 @@ function FadeIn({ children, delay = 0, direction = 'up' }) {
   )
 }
 
-const BRAND = '#106683'
-const BRAND_DARK = '#07485c'
-const BRAND_LIGHT = '#e8f4f8'
-
 /* ticker items */
 const tickers = [
   'Industrial Automation', 'PLC & SCADA', 'CAD Services', 'Turnkey Projects',
@@ -45,8 +51,6 @@ const coreServices = [
   { icon: <Sun size={30} strokeWidth={1.3} />, title: 'Solar Energy', desc: 'Grid-tied and off-grid solar PV solutions for commercial and industrial facilities — clean and cost-effective.' },
   { icon: <Layers size={30} strokeWidth={1.3} />, title: 'Turnkey Projects', desc: 'Single-point responsibility from concept to commissioning across civil, MEP, automation, and fit-out scopes.' },
 ]
-
-
 
 
 
@@ -71,37 +75,32 @@ export default function Home() {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section style={{ position: 'relative', minHeight: '100svh', display: 'flex', alignItems: 'center' }}>
+      <section style={{ position: 'relative', minHeight: '100svh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <img
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&auto=format&fit=crop&q=80"
+            src={HERO_IMAGE}
             alt="DCE Projects — MEP Engineering"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,72,92,0.82) 35%, rgba(7,72,92,0.48) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(145deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 58, 138, 0.75) 55%, rgba(234, 88, 12, 0.45) 100%)' }} />
         </div>
 
-        <div style={{ position: 'relative', width: '100%', padding: '0 32px', display: 'flex', justifyContent: 'center' }}>
-          <div style={{ maxWidth: 820, width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <img
-              src="/dce-logo.png"
-              alt="DCE Projects"
-              style={{ maxWidth: 320, marginBottom: 36, display: 'block' }}
-            />
-            <h1 style={{ fontSize: 'clamp(36px,5.5vw,70px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#fff', lineHeight: 1.07, marginBottom: 28, letterSpacing: '-0.02em' }}>
+        <div style={{ position: 'relative', width: '100%', padding: '0 32px', display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+          <div style={{ maxWidth: 820, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: heroLoaded ? 1 : 0, transform: heroLoaded ? 'none' : 'translateY(20px)', transition: 'all 0.9s cubic-bezier(0.19,1,0.22,1) 120ms' }}>
+            <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 24 }}>Founded in 2021 • Haldwani, Uttarakhand</span>
+            <h1 style={{ fontSize: 'clamp(36px,6vw,72px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#fff', lineHeight: 1.05, marginBottom: 28, letterSpacing: '-0.02em' }}>
               Engineering the Future.<br />
-              <em style={{ color: 'rgba(255,255,255,0.75)' }}>One Project at a Time.</em>
+              <em style={{ color: 'rgba(255,255,255,0.8)' }}>One Project at a Time.</em>
             </h1>
             <p style={{ fontSize: 'clamp(15px,1.8vw,19px)', color: 'rgba(255,255,255,0.82)', lineHeight: 1.85, maxWidth: 640, marginBottom: 44 }}>
               DCE Projects is a full-spectrum MEP engineering organisation — delivering Industrial Automation, PLC/SCADA, HVAC, Solar, Chiller Plants, Turnkey Projects, and specialist consultancy across India.
             </p>
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
               <Link to="/contact" className="btn-primary" style={{ fontSize: 13, padding: '14px 36px' }}>Start a Project</Link>
-              <Link to="/about" className="btn-ghost" style={{ fontSize: 13, padding: '13px 36px', color: '#fff', borderColor: 'rgba(255,255,255,0.5)' }}>Who We Are</Link>
+              <Link to="/about" className="btn-ghost-light" style={{ fontSize: 13, padding: '13px 36px' }}>Who We Are</Link>
             </div>
           </div>
         </div>
-
       </section>
 
       {/* ── TICKER MARQUEE ── */}
@@ -124,71 +123,75 @@ export default function Home() {
         </div>
       </section>
 
-
-
-      {/* ── INTRO —*/}
-      <section style={{ padding: '120px 32px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px,1fr))', gap: 80, alignItems: 'center' }}>
-          <FadeIn direction="left">
-            <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Who We Are</span>
-            <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginTop: 16, marginBottom: 28, lineHeight: 1.1 }}>
-              A Full-Spectrum Engineering Organisation.
-            </h2>
-            <p style={{ fontSize: 16, color: '#555', lineHeight: 1.9, marginBottom: 20 }}>
-              Founded in 2021 in Haldwani, Uttarakhand, DCE Projects is a full-spectrum MEP and automation engineering organisation — built from day one to handle every discipline, from Industrial Automation and PLC/SCADA to HVAC, Solar, Chiller Plants, and Turnkey Projects.
-            </p>
-            <p style={{ fontSize: 16, color: '#555', lineHeight: 1.9, marginBottom: 36 }}>
-              Today, our capabilities span <strong>Industrial Automation, PLC &amp; SCADA programming, CAD services, Chiller Plant setup, Radiant Heating, HPN Consultancy</strong> for high-rise buildings, <strong>Imported Machine Spares</strong>, and full <strong>Turnkey Projects</strong> — all under one roof.
-            </p>
-            <Link to="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: BRAND, fontWeight: 600, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.08em', textDecoration: 'none', borderBottom: `2px solid ${BRAND}`, paddingBottom: 4 }}>
-              Our Full Story <ArrowRight size={14} />
-            </Link>
-          </FadeIn>
-          <FadeIn direction="right" delay={120}>
-            <div style={{ position: 'relative' }}>
-              <img
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&auto=format&fit=crop&q=80"
-                alt="DCE Engineering"
-                style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', filter: 'brightness(0.95)' }}
-              />
-            </div>
-          </FadeIn>
+      {/* ── INTRO ── */}
+      <section className="section">
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px,1fr))', gap: 80, alignItems: 'center' }}>
+            <FadeIn direction="left">
+              <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Who We Are</span>
+              <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#0f172a', marginTop: 16, marginBottom: 28, lineHeight: 1.1 }}>
+                A Full-Spectrum Engineering Organisation.
+              </h2>
+              <p style={{ fontSize: 16, color: '#475569', lineHeight: 1.9, marginBottom: 20 }}>
+                Founded in 2021 in Haldwani, Uttarakhand, DCE Projects is a full-spectrum MEP and automation engineering organisation — built from day one to handle every discipline, from Industrial Automation and PLC/SCADA to HVAC, Solar, Chiller Plants, and Turnkey Projects.
+              </p>
+              <p style={{ fontSize: 16, color: '#475569', lineHeight: 1.9, marginBottom: 36 }}>
+                Today, our capabilities span <strong>Industrial Automation, PLC &amp; SCADA programming, CAD services, Chiller Plant setup, Radiant Heating, HPN Consultancy</strong> for high-rise buildings, <strong>Imported Machine Spares</strong>, and full <strong>Turnkey Projects</strong> — all under one roof.
+              </p>
+              <Link to="/about" className="link-underline">
+                Our Full Story <ArrowRight size={14} />
+              </Link>
+            </FadeIn>
+            <FadeIn direction="right" delay={120}>
+              <div style={{ position: 'relative' }}>
+                <img
+                  src={INTRO_IMAGE}
+                  alt="DCE Engineering team working on site"
+                  style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', filter: 'brightness(0.9)' }}
+                />
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
       {/* ── SERVICES GRID ── */}
-      <section style={{ padding: '0 32px 120px' }}>
+      <section className="section-sm" style={{ background: '#f8fafc' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <FadeIn>
-            <div style={{ textAlign: 'center', marginBottom: 72 }}>
+            <div className="section-header">
               <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, letterSpacing: '0.2em', textTransform: 'uppercase' }}>Our Capabilities</span>
-              <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginTop: 16, marginBottom: 16 }}>
+              <h2 style={{ fontSize: 'clamp(32px,4vw,54px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#0f172a', marginTop: 16, marginBottom: 16 }}>
                 Engineered for Every Need
               </h2>
-              <p style={{ fontSize: 16, color: '#666', maxWidth: 560, margin: '0 auto', lineHeight: 1.8 }}>
+              <p style={{ fontSize: 16, color: '#64748b', maxWidth: 560, margin: '0 auto', lineHeight: 1.8 }}>
                 Four core practice areas — each backed by qualified engineers, certified equipment, and a track record of delivery.
               </p>
             </div>
           </FadeIn>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 2, background: '#e0e0e0' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 1, background: '#e2e8f0', overflow: 'hidden' }}>
             {coreServices.map((s, i) => (
               <FadeIn key={i} delay={i * 60}>
                 <div
-                  style={{ background: '#fff', padding: '48px 36px', transition: 'background 0.3s', cursor: 'default', height: '100%' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = BRAND_LIGHT }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#fff' }}
+                  style={{ background: '#fff', padding: '48px 36px', transition: 'all 0.3s ease', cursor: 'default', height: '100%', position: 'relative' }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = BRAND_LIGHT;
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = '#fff';
+                  }}
                 >
-                  <div style={{ color: BRAND, marginBottom: 20 }}>{s.icon}</div>
-                  <h3 style={{ fontSize: 22, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginBottom: 16, lineHeight: 1.3 }}>{s.title}</h3>
-                  <p style={{ fontSize: 14, color: '#666', lineHeight: 1.8 }}>{s.desc}</p>
+                  <div style={{ color: BRAND, marginBottom: 20, fontSize: 36, lineHeight: 1 }}>{s.icon}</div>
+                  <h3 style={{ fontSize: 22, fontWeight: 400, fontFamily: 'DM Serif Display', color: '#0f172a', marginBottom: 16, lineHeight: 1.3 }}>{s.title}</h3>
+                  <p style={{ fontSize: 14, color: '#64748b', lineHeight: 1.8 }}>{s.desc}</p>
                 </div>
               </FadeIn>
             ))}
           </div>
 
           <div style={{ textAlign: 'center', marginTop: 52 }}>
-            <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: BRAND, fontWeight: 600, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.08em', textDecoration: 'none', borderBottom: `2px solid ${BRAND}`, paddingBottom: 4 }}>
+            <Link to="/services" className="link-underline">
               View All Services <ArrowRight size={14} />
             </Link>
           </div>
@@ -196,15 +199,16 @@ export default function Home() {
       </section>
 
       {/* ── FULL-WIDTH CALLOUT ── */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: BRAND_DARK }}>
+      <section style={{ position: 'relative', overflow: 'hidden', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <img
-            src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&auto=format&fit=crop&q=80"
-            alt="DCE Projects team"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.2, filter: 'grayscale(1)' }}
+            src={WORK_IMAGE}
+            alt="DCE Projects team on site"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3, filter: 'grayscale(1) brightness(0.8)' }}
           />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95))' }} />
         </div>
-        <div style={{ position: 'relative', maxWidth: 1280, margin: '0 auto', padding: '120px 32px', maxWidth: 860 }}>
+        <div style={{ position: 'relative', maxWidth: 860, margin: '0 auto', padding: '120px 32px', width: '100%' }}>
           <FadeIn>
             <h2 style={{ fontSize: 'clamp(36px,5vw,64px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#fff', lineHeight: 1.08, marginBottom: 28 }}>
               Our work speaks for us.
@@ -212,35 +216,34 @@ export default function Home() {
             <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.78)', lineHeight: 1.9, maxWidth: 700, marginBottom: 40 }}>
               Since 2021, DCE Projects has delivered industrial automation systems, HVAC contracts, solar installations, chiller plant setups, and full turnkey projects — all under one roof, without compromise on quality or timelines.
             </p>
-            <Link to="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#fff', fontWeight: 600, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.08em', textDecoration: 'none', borderBottom: '2px solid rgba(255,255,255,0.5)', paddingBottom: 4 }}>
+            <Link to="/about" className="link-underline-light">
               About DCE Projects <ArrowRight size={14} />
             </Link>
           </FadeIn>
         </div>
       </section>
 
-
       {/* ── ABOUT TEASER ── */}
-      <section style={{ padding: '120px 32px', background: '#fff' }}>
+      <section className="section">
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <FadeIn>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', overflow: 'hidden', border: '1px solid #e5e5e5' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
               <div style={{ padding: '80px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, letterSpacing: '0.2em', textTransform: 'uppercase' }}>About DCE Projects</span>
-                <h2 style={{ fontSize: 'clamp(28px,3.5vw,48px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#111', marginTop: 16, marginBottom: 24, lineHeight: 1.1 }}>
+                <h2 style={{ fontSize: 'clamp(28px,3.5vw,48px)', fontWeight: 400, fontFamily: 'DM Serif Display', color: '#0f172a', marginTop: 16, marginBottom: 24, lineHeight: 1.1 }}>
                   The dream lives on.
                 </h2>
-                <p style={{ fontSize: 15, color: '#555', lineHeight: 1.9, marginBottom: 36, maxWidth: 460 }}>
+                <p style={{ fontSize: 15, color: '#64748b', lineHeight: 1.9, marginBottom: 36, maxWidth: 460 }}>
                   Built on a foundation of engineering excellence and client-first values, DCE Projects continues to grow — expanding into new service verticals while staying true to the principles that built our reputation.
                 </p>
-                <Link to="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: BRAND, fontWeight: 600, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.08em', textDecoration: 'none', borderBottom: `2px solid ${BRAND}`, paddingBottom: 4, alignSelf: 'flex-start' }}>
+                <Link to="/about" className="link-underline" style={{ alignSelf: 'flex-start' }}>
                   Discover Our Story <ArrowRight size={14} />
                 </Link>
               </div>
               <div style={{ position: 'relative', overflow: 'hidden', minHeight: 380 }}>
                 <img
-                  src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&auto=format&fit=crop&q=80"
-                  alt="DCE Projects"
+                  src={INTRO_IMAGE}
+                  alt="DCE Projects engineering facility"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease' }}
                   onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
                   onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
@@ -252,10 +255,10 @@ export default function Home() {
       </section>
 
       {/* ── CTA BANNER ── */}
-      <section style={{ padding: '0 32px 120px' }}>
+      <section className="section-sm">
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <FadeIn>
-            <div style={{ background: BRAND, padding: '80px 56px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 32, position: 'relative', overflow: 'hidden' }}>
+            <div style={{ background: BRAND, padding: '80px 56px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 32, position: 'relative', overflow: 'hidden', borderRadius: 0 }}>
               <div style={{ position: 'absolute', top: -60, right: -60, width: 300, height: 300, borderRadius: '50%', background: 'rgba(255,255,255,0.04)' }} />
               <div style={{ position: 'absolute', bottom: -80, left: -40, width: 240, height: 240, borderRadius: '50%', background: 'rgba(255,255,255,0.04)' }} />
               <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Project Inquiries</span>
@@ -266,16 +269,10 @@ export default function Home() {
                 From a single chiller to a complete industrial automation turnkey — our team is ready to scope, design, and deliver.
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <a href="mailto:services.dce@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff', color: BRAND_DARK, fontWeight: 600, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.05em', padding: '15px 36px', textDecoration: 'none', transition: 'all 0.3s' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = BRAND_DARK; e.currentTarget.style.color = '#fff' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = BRAND_DARK }}
-                >
+                <a href="mailto:services.dce@gmail.com" className="btn-primary" style={{ fontSize: 13, padding: '15px 36px' }}>
                   Email Us
                 </a>
-                <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'transparent', color: '#fff', fontWeight: 600, fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.05em', padding: '14px 36px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.4)', transition: 'all 0.3s' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.borderColor = '#fff' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)' }}
-                >
+                <Link to="/contact" className="btn-ghost-light" style={{ fontSize: 13, padding: '14px 36px' }}>
                   Contact Form <ArrowRight size={14} />
                 </Link>
               </div>
